@@ -154,6 +154,14 @@ class { '::logrotate':
 }
 ```
 
+To avoid overwriting the OS-provided main configuration file, set `include_defaults` to `false`.
+
+```puppet
+class { '::logrotate':
+  include_defaults => false,
+}
+```
+
 
 ## Examples
 

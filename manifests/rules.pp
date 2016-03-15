@@ -3,6 +3,7 @@ class logrotate::rules{
 
   $hieramerge = $::logrotate::hieramerge
   $rules      = $::logrotate::rules
+  $include_defaults = $::logrotate::include_defaults
 
   if $hieramerge {
     $_rules = hiera_hash('logrotate::rules', $rules)
@@ -11,5 +12,9 @@ class logrotate::rules{
   }
 
   create_resources('logrotate::rule', $_rules)
+
+  if $include_defaults {
+    include ::logrotate::defaults
+  }
 
 }
