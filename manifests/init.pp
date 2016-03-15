@@ -5,18 +5,16 @@ class logrotate (
   $manage_cron_daily = true,
   $package           = 'logrotate',
   $rules             = {},
-  $config            = undef,
+  $config            = true,
 ) {
 
   include ::logrotate::install
   include ::logrotate::config
-  include ::logrotate::defaults
   include ::logrotate::rules
 
   anchor{'logrotate_begin':}->
   Class['::logrotate::install']->
   Class['::logrotate::config']->
-  Class['::logrotate::defaults']->
   Class['::logrotate::rules']->
   anchor{'logrotate_end':}
 

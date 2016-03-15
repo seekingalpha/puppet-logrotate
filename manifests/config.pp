@@ -21,9 +21,12 @@ class logrotate::config{
     }
   }
 
-  if is_hash($config) {
-    $custom_config = {'/etc/logrotate.conf' => $config}
-    create_resources('logrotate::conf', $custom_config)
+  if $config {
+    if is_hash($config) {
+      $custom_config = {'/etc/logrotate.conf' => $config}
+      create_resources('logrotate::conf', $custom_config)
+    }
+    include ::logrotate::defaults
   }
 
 }

@@ -154,6 +154,14 @@ class { '::logrotate':
 }
 ```
 
+To avoid overwriting the OS-provided main configuration file, set `config` to `false`.
+
+```puppet
+class { '::logrotate':
+  config => false,
+}
+```
+
 
 ## Examples
 
