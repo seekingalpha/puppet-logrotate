@@ -211,7 +211,7 @@ define logrotate::conf (
   }
 
   if ($su_user != 'UNDEFINED') and ($su_group == 'UNDEFINED') {
-    $_su_user  = $_su_user
+    $_su_user  = $su_user
     $_su_group = $logrotate::root_group
   } elsif ($su_user == 'UNDEFINED') and ($su_group != 'UNDEFINED') {
     $_su_user  = $logrotate::root_user
